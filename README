@@ -1,12 +1,17 @@
 Proof-of-Learning (PoL) AI Framework
 
-Decentralized AI training & validation network powered by blockchain and Zero-Knowledge Machine Learning (zkML).
-Purely decentralized AI training framework would allow machine learning models to evolve in a transparent, verifiable, and community-driven manner without
-requiring centralized control. Traditional AI development relies on private datasets, corporate oversight, and opaque decision-making, 
+-Decentralized AI training & validation network powered by blockchain and Zero-Knowledge Machine Learning (zkML),
+training framework would allow machine learning models to evolve in a transparent, verifiable,
+and community-driven manner without requiring centralized control. 
+
+-Traditional AI development relies on private datasets, corporate oversight, and opaque decision-making, 
 lacking public verifiability and fair incentive structures.
 
+- Hashing proof-of-learning commitments into an immutable ledger, ensuring that training efforts are transparent, 
+irreversible, and censorship-resistant. By leveraging zero-knowledge machine learning (zkML)
 
 - Fork the repo, submit PRs.  
+
 - Join our 📧 Email:33azank33@gmail.com | Discord: https://discord.gg/WKnG2dHd
 - Bounties available for AI researchers & blockchain developers.  
 
