@@ -1,0 +1,12 @@
+																																								Proof-of-Learning: Decentralized AI Training & Validation Mechanism
+
+																																																								Azank
+																																																				33azank33@gmail.com
+																																																							PoLAi.com
+
+Abstract
+A purely decentralized AI training framework would allow machine learning models to evolve in a transparent, verifiable, and community-driven manner without requiring centralized control. While traditional AI development relies on opaque datasets, private infrastructure, and corporate oversight, it lacks public verification and fair incentive structures.
+We propose Proof-of-Learning (PoL), a novel blockchain-based mechanism that ensures AI training contributions are verifiable, decentralized, and rewarded fairly. PoL secures AI updates using cryptographic proofs, enabling a trustless AI economy where staking governs model evolution, and decentralized nodes validate improvements.
+The network timestamps AI model updates by hashing proof-of-learning commitments into a blockchain ledger, ensuring that training efforts are transparent, irreversible, and censorship-resistant. By leveraging zero-knowledge machine learning (zkML), AI training can be proven without exposing private data, preserving security while maintaining an open development ecosystem.
+As long as a majority of compute resources are controlled by nodes acting honestly, AI updates will remain aligned with verifiable improvements rather than adversarial manipulation. The system requires minimal centralized oversight; contributors stake tokens to submit training data or compute power, validators verify AI model progression, and rewards are distributed accordingly. Nodes can leave and rejoin the network at will, trusting the longest chain of verifiable AI updates as the canonical record of AI progress.
+By combining blockchain incentives with machine learning, Proof-of-Learning (PoL) transforms AI into a decentralized, self-improving system, independent of corporate control, accessible to all, and aligned with the interests of its users.
