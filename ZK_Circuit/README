@@ -8,27 +8,39 @@
 8.	Make sure to have. SnarkJs, PoT.circom, input.json and witness.wtns ready.
 
 9.	ZK PROOF GENERATION:
+
+PHASE1
   1.	Setup Trusted Ceremony (phase1): trusted setup for the proving schema.
-      	“snarkjs powersoftau new bn128 12 pot12_0000.ptau -v”
+      a.“snarkjs powersoftau new bn128 12 pot12_0000.ptau -v”
+
   2.	Contribute randomness adding entropy
-      	“snarkjs powersoftau contribute pot12_0000.ptau pot12_0001.ptau --name="First Contribution" -v”
+      a.“snarkjs powersoftau contribute pot12_0000.ptau pot12_0001.ptau --name="First Contribution" -v”
+
   3.	Prepare for phase 2 – groth16
-      	“snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau”
-  Phase2
+      a.“snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau”
+  
+PHASE2
   1.	Generate ZK proving and verification Keys
-    a.	snarkjs groth16 setup PoT.r1cs pot12_final.ptau PoT_final.zkey
+      a.snarkjs groth16 setup PoT.r1cs pot12_final.ptau PoT_final.zkey
+
   2.	contribute to the final ZK setup
-    a.	snarkjs zkey contribute PoT_final.zkey PoT_final_contributed.zkey --name="Second Contribution" -v
+      a.snarkjs zkey contribute PoT_final.zkey PoT_final_contributed.zkey --name="Second Contribution" -v
+
   3.	export verification key
-    a.	snarkjs zkey export verificationkey PoT_final_contributed.zkey verification_key.json
-  Final Phase
-  1.	Generate ZK proof	
-  a.	snarkjs groth16 prove PoT_final_contributed.zkey witness.wtns proof.json public.json
-  Generates: proof.json and public.json
-  Zk proof is within proof.json. public inputs for verification are in public.json.
+      a.snarkjs zkey export verificationkey PoT_final_contributed.zkey verification_key.json
+
+PHASE3
+  1.  Generate ZK proof	
+      a.snarkjs groth16 prove PoT_final_contributed.zkey witness.wtns proof.json public.json
+      Generates: proof.json and public.json
+      Zk proof is within proof.json. public inputs for verification are in public.json.
+
   2.	Verify Proof
-  a.	snarkjs groth16 verify verification_key.json public.json proof.jso
-  i.	IF PROOF IS VALID OUTPUT: ‘snarkJS: OK!’
+      a.snarkjs groth16 verify verification_key.json public.json proof.jso
+      IF PROOF IS VALID OUTPUT: ‘snarkJS: OK!’
+
   3.	Generate Solidity Verifier
-  a.	snarkjs zkey export solidityverifier PoT_final_contributed.zkey verifier.sol
-  -	creates verifier.sol contract that can be deployed to Ethereum compatible blockchains.
+      a.snarkjs zkey export solidityverifier PoT_final_contributed.zkey verifier.sol
+      creates verifier.sol contract that can be deployed to Ethereum compatible blockchains.
+
+powershell commands: a."<COMMAND>"
