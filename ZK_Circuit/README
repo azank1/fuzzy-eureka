@@ -1,3 +1,8 @@
+Within the Context of a PoL based ecosystems; ZK-Proofs are used to train the model in a
+decentralized manner.
+
+BASIC IMPLEMENTATION TO VERIFY CUSTOM INPUTS { weights_before, weights_after, delta }
+
 1.	Build ZK circuit to compute training weights. PoT.circom.
 2.	Compile the ZK circuit: “circom PoT.circom --r1cs --wasm --sym –c”
 3.	PoT.r1cs, PoT.wasm and PoT.sym generated.
