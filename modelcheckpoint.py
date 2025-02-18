@@ -7,7 +7,7 @@ def generate_fake_model():
 
 def hash_model(weights):
     """Generate a cryptographic hash of the model state."""
-    model_string = ",".join(map(str, weights))  # Convert weights to a string
+    model_string = ",".join(map(str, weights))  # weights to a string
     return hashlib.sha256(model_string.encode()).hexdigest()
 
 # Simulating training
