@@ -8,7 +8,7 @@ and community-driven manner without requiring centralized control.
 lacking public verifiability and fair incentive structures.
 
 - Hashing proof-of-learning commitments into an immutable ledger, ensuring that training efforts are transparent, 
-irreversible, and censorship-resistant. By leveraging zero-knowledge machine learning (zkML)
+irreversible, and censorship-resistant. By leveraging zero-knowledge SNARKs
 
 - Fork the repo, submit PRs.  
 
