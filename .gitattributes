@@ -1,0 +1,6 @@
+*.sol linguist-detectable=true
+*.circom linguist-detectable=true
+*.json linguist-detectable=false
+*.bin linguist-detectable=false
+*.wasm linguist-detectable=false
+*.r1cs linguist-detectable=false
