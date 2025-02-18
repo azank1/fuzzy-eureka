@@ -1,4 +1,5 @@
 //ZK Circuit to train model correctly without revealing actual weights.
+//ZK SNARKs (succinct non-interactive arguments of knowlegde)
 
 pragma circom 2.1.6;
 
