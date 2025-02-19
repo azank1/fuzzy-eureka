@@ -40,8 +40,27 @@ Some dependencies (such as the ws package used by @ethersproject/providers) may 
 ``` shell
 npm audit fix
 ```
+```terminal
+Validator Address: 0xAbC... (deployer address)
+Node Address: 0xDeF... (node address)
+PoL Contract attached at: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+Current Contract Reward Pool: 0.0 ETH
+Funding contract with 10 ETH...
+Contract funded successfully.
+Node submitting a checkpoint...
+Checkpoint submitted.
+Fetching latest checkpoint ID...
+Latest Checkpoint ID: 1
+Validator approving the checkpoint...
+Checkpoint approved.
+Node claiming reward...
+Reward claimed successfully.
+Node Balance: 0.000075 ETH
+Updated Contract Reward Pool: 9.999925 ETH
 
+```
 
 ---
 
 Feel free to adjust any section as needed for your specific project details or additional notes regarding your setup and any fixes applied for legacy issues.
+
