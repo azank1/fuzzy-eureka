@@ -24,10 +24,7 @@ contract ProofOfLearning {
     event CheckpointApproved(uint256 checkpointId, bool approved);
     event RewardClaimed(uint256 checkpointId, address indexed submitter, uint256 reward);
 
-    /// @notice Submits a new checkpoint.
-    /// @param _checkpointHash The hash representing the checkpoint data.
-    /// @param _someData Additional data (e.g., a score).
-    /// @return The new checkpoint ID.
+ 
     function submitCheckpoint(bytes32 _checkpointHash, uint256 _someData) external returns (uint256) {
         latestCheckpointId++;
         checkpoints[latestCheckpointId] = Checkpoint({
@@ -41,9 +38,7 @@ contract ProofOfLearning {
         return latestCheckpointId;
     }
 
-    /// @notice Approves (or disapproves) a submitted checkpoint.
-    /// @param _checkpointId The checkpoint identifier.
-    /// @param _approved Whether the checkpoint is approved.
+   
     function approveCheckpoint(uint256 _checkpointId, bool _approved) external {
         Checkpoint storage cp = checkpoints[_checkpointId];
         require(cp.submitter != address(0), "Checkpoint does not exist");
@@ -51,8 +46,7 @@ contract ProofOfLearning {
         emit CheckpointApproved(_checkpointId, _approved);
     }
 
-    /// @notice Claims the reward for an approved checkpoint.
-    /// @param _checkpointId The checkpoint identifier.
+   
     function claimReward(uint256 _checkpointId) external {
         Checkpoint storage cp = checkpoints[_checkpointId];
         require(cp.submitter == msg.sender, "Not the submitter");
