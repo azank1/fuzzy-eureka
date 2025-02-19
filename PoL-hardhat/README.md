@@ -40,6 +40,7 @@ Some dependencies (such as the ws package used by @ethersproject/providers) may 
 ``` shell
 npm audit fix
 ```
+Console:
 ```terminal
 Validator Address: 0xAbC... (deployer address)
 Node Address: 0xDeF... (node address)
