@@ -25,25 +25,20 @@ template ProofOfTraining(n) {
 
     signal differences[n];
 
-    // Compute weight differences manually
     for (var i = 0; i < n; i++) {
         differences[i] <== weights_before[i] - weights_after[i];
     }
 
-    // Sum the differences
     component sum_diff = Sum(n);
     sum_diff.values <== differences;
 
-    // Check if the sum of differences is greater than delta
     signal proof_check;
     proof_check <== sum_diff.sum_out - delta;
 
-    // Fix: Use a comparator instead of `> 0`
     signal is_positive;
     is_positive <== proof_check * proof_check; // Non-zero when proof_check is positive
 
     valid_proof <== is_positive; // Ensures we output 1 when improvement exists
 }
 
-// Declare the main component for compilation
 component main = ProofOfTraining(3);
