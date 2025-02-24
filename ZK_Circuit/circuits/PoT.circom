@@ -1,4 +1,4 @@
-# © 2025 azank1 / PoTCircuit. All Rights Reserved.
+//© 2025 azank1 / PoTCircuit. All Rights Reserved.
 
 //ZK Circuit to train model correctly without revealing actual weights.
 //ZK SNARKs (succinct non-interactive arguments of knowlegde)
