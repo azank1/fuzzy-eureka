@@ -1,0 +1,53 @@
+{
+  "name": "pot-protocol",
+  "version": "0.1.0",
+  "description": "Proof of Training (PoT) Protocol - Decentralized AI governance through consensus",
+  "private": true,
+  "workspaces": [
+    "orchestrator",
+    "rag-agent",
+    "ui",
+    "PoL-hardhat"
+  ],
+  "scripts": {
+    "install:all": "npm install && cd orchestrator && npm install && cd ../rag-agent && npm install && cd ../ui && npm install && cd ../PoL-hardhat && npm install",
+    "build": "cd orchestrator && npm run build",
+    "build:all": "cd orchestrator && npm run build && cd ../ui && echo 'UI has no build step'",
+    "test": "cd orchestrator && npm test",
+    "test:watch": "cd orchestrator && npm run test:watch",
+    "test:coverage": "cd orchestrator && npm run test:coverage",
+    "dev": "concurrently \"cd orchestrator && npm run dev\" \"cd ui && npm start\"",
+    "start:orchestrator": "cd orchestrator && npm start",
+    "start:ui": "cd ui && npm start",
+    "start:rag": "cd rag-agent && node src/index.js",
+    "deploy:contracts": "cd PoL-hardhat && npx hardhat run scripts/deploy.js",
+    "deploy:testnet": "cd PoL-hardhat && npx hardhat run scripts/deploy.js --network sepolia",
+    "lint": "cd orchestrator && npm run lint",
+    "lint:fix": "cd orchestrator && npm run lint:fix",
+    "format": "prettier --write \"**/*.{ts,js,json,md}\"",
+    "clean": "rm -rf orchestrator/dist orchestrator/node_modules rag-agent/node_modules ui/node_modules PoL-hardhat/node_modules node_modules",
+    "reset": "npm run clean && npm run install:all && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "keywords": [
+    "ai",
+    "governance",
+    "consensus",
+    "zero-knowledge",
+    "blockchain",
+    "decentralized",
+    "proof-of-training"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PoT-protocol/PoT-protocol.git"
+  }
+}
