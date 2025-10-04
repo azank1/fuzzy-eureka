@@ -1,4 +1,4 @@
-# 🎛️ MetaOrcha Developer Dashboard
+#  MetaOrcha Developer Dashboard
 
 ## Overview
 
@@ -6,23 +6,23 @@ A real-time web dashboard for monitoring and testing the MetaOrcha orchestration
 
 ## Features
 
-### ✨ **Real-Time Orchestration Visualization**
+###  **Real-Time Orchestration Visualization**
 - Live workflow execution with step-by-step progress
 - Visual status indicators (pending, running, completed, error)
 - Animated progress with pulse effects
 
-### 📊 **Developer Monitoring Tools**
+###  **Developer Monitoring Tools**
 - **Execution Context Display**: Real-time JSON context updates
 - **Live Logging**: Terminal-style log output with success/error highlighting
 - **Agent Registry**: View all registered agents with tags and costs
 - **System Status**: Connection status and execution progress
 
-### 🎮 **Interactive Controls**
+###  **Interactive Controls**
 - **Run Food Ordering Demo**: Multi-step validation → pricing → payment workflow
 - **Run Document Processing Demo**: Text extraction → summarization → translation
 - **Reset System**: Clear all state and start fresh
 
-### 🌐 **WebSocket Integration**
+###  **WebSocket Integration**
 - Real-time bidirectional communication
 - Automatic reconnection on disconnect
 - Live status updates during execution
