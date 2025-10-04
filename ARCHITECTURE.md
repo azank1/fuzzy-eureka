@@ -1,4 +1,4 @@
-# 🏛️ PoT Protocol Architecture
+#  PoT Protocol Architecture
 
 > **Deep dive into the technical architecture of humanity's AI governance system**
 
