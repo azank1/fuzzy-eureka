@@ -8,7 +8,7 @@ async function main() {
   
   console.log('🤖 PoT Protocol RAG Agent - Processing Task');
   console.log('=====================================');
-  console.log(`📝 Task: ${task}\n`);
+  console.log(` Task: ${task}\n`);
   
   try {
     const result = await agent.processTask(task);
