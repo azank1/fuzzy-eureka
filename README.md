@@ -1,3 +1,51 @@
+### The PoT Cycle
+
+```
+┌──────────────┐
+│   PROVIDER   │──┐
+│ Trains Agent │  │
+└──────────────┘  │
+                  ▼
+         ┌─────────────────┐
+         │ Generate ZK      │
+         │ Training Proof   │
+         └─────────────────┘
+                  │
+                  ▼
+         ┌─────────────────┐
+         │  Submit Proof   │
+         │  + Stake Tokens │
+         └─────────────────┘
+                  │
+                  ▼
+┌─────────────────────────────┐
+│   VALIDATOR NETWORK         │
+│  • Test agent performance   │
+│  • Verify ZK proofs         │──── Consensus ────┐
+│  • Score capabilities       │                   │
+└─────────────────────────────┘                   │
+                                                  ▼
+                                         ┌──────────────┐
+                                         │   APPROVED   │
+                                         │ Agent Listed │
+                                         └──────────────┘
+                                                  │
+                                                  ▼
+                                      ┌──────────────────────┐
+                                      │  USERS ACCESS AGENT  │
+                                      │  • Pay per use       │
+                                      │  • Cryptographic SLA │
+                                      └──────────────────────┘
+                                                  │
+                                                  ▼
+                                      ┌──────────────────────┐
+                                      │  REWARDS DISTRIBUTED │
+                                      │  • Provider earns    │
+                                      │  • Validators earn   │
+                                      │  • Reputation grows  │
+                                      └──────────────────────┘
+```
+
 # PoT Protocol: Proof of Training
 
 > **A Decentralized Consensus Network for AI Agent Economies**
@@ -71,112 +119,6 @@ PoT Protocol establishes a **decentralized consensus network** where:
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### The PoT Cycle
-
-```
-┌──────────────┐
-│   PROVIDER   │──┐
-│ Trains Agent │  │
-└──────────────┘  │
-                  ▼
-         ┌─────────────────┐
-         │ Generate ZK      │
-         │ Training Proof   │
-         └─────────────────┘
-                  │
-                  ▼
-         ┌─────────────────┐
-         │  Submit Proof   │
-         │  + Stake Tokens │
-         └─────────────────┘
-                  │
-                  ▼
-┌─────────────────────────────┐
-│   VALIDATOR NETWORK         │
-│  • Test agent performance   │
-│  • Verify ZK proofs         │──── Consensus ────┐
-│  • Score capabilities       │                   │
-└─────────────────────────────┘                   │
-                                                  ▼
-                                         ┌──────────────┐
-                                         │   APPROVED   │
-                                         │ Agent Listed │
-                                         └──────────────┘
-                                                  │
-                                                  ▼
-                                      ┌──────────────────────┐
-                                      │  USERS ACCESS AGENT  │
-                                      │  • Pay per use       │
-                                      │  • Cryptographic SLA │
-                                      └──────────────────────┘
-                                                  │
-                                                  ▼
-                                      ┌──────────────────────┐
-                                      │  REWARDS DISTRIBUTED │
-                                      │  • Provider earns    │
-                                      │  • Validators earn   │
-                                      │  • Reputation grows  │
-                                      └──────────────────────┘
-```
-
-##  Core Concepts
-
-### 1. Proof of Training (PoT)
-
-Agents must prove they underwent legitimate training through:
-- **Training Proofs**: ZK circuits verify training iterations, data quality, convergence
-- **Capability Proofs**: Demonstrate specific skills (NLP, vision, reasoning)
-- **Data Provenance**: Prove training data meets quality/diversity standards
-- **Model Integrity**: Cryptographic signatures prevent tampering
-
-### 2. Decentralized Validation
-
-Validator nodes form consensus on agent quality:
-- **Test Suites**: Standardized benchmarks across domains
-- **Adversarial Testing**: Attempt to break or fool agents
-- **Performance Metrics**: Speed, accuracy, consistency, safety
-- **Economic Incentives**: Validators stake and earn for honest assessment
-
-### 3. The Agent Registry
-
-A blockchain-based registry where:
-- Every agent has a unique cryptographic identity
-- Performance history is immutable and public
-- Reputation scores aggregate validator consensus
-- Slashing events are permanently recorded
-- Users can query by capability, cost, reputation
-
-### 4. Tokenomics
-
-The protocol's native token powers the economy:
-
-**Staking**:
-- Providers stake tokens to list agents
-- Higher stake = higher trust signal
-- Stake slashed for poor performance or fraud
-
-**Transaction Fees**:
-- Users pay tokens to use agents
-- Fees split: Provider (70%), Validators (20%), Protocol (10%)
-
-**Rewards**:
-- Top-performing agents earn bonus rewards
-- Validators earn for honest participation
-- Early adopters get inflationary rewards
-
-**Governance**:
-- Token holders vote on protocol parameters
-- Validator selection via token-weighted voting
-- Community proposals for ecosystem development
-
-### 5. Zero-Knowledge Proofs
-
-Privacy-preserving verification enables:
-- **Training Verification** without revealing proprietary data
-- **Capability Proofs** without exposing model weights  
-- **Data Compliance** proving regulatory requirements met
-- **Fair Competition** preventing model theft while ensuring quality
-
 ##  Use Cases
 
 ### For AI Providers
@@ -213,12 +155,6 @@ Privacy-preserving verification enables:
 - SLA guarantees backed by stake
 - Fallback to alternative agents automatically
 
-**Build With Confidence**:
-- Compose multiple agents for complex tasks
-- Performance guarantees from the protocol
-- No vendor lock-in
-- Decentralized reliability
-
 ### For Enterprises
 
 **Trustless AI Infrastructure**:
@@ -227,46 +163,6 @@ Privacy-preserving verification enables:
 - Multi-agent redundancy for critical systems
 - Predictable costs with transparent pricing
 
-##  Technical Architecture
-
-### Project Structure
-
-```
-PoT-protocol/
-│
-├── orchestrator/           # Multi-agent orchestration engine
-│   ├── core/              # MetaSuperAgent, consensus routing
-│   ├── adapters/          # Adapters for different agent types
-│   ├── registry/          # Agent registry & reputation system
-│   └── types/             # TypeScript type definitions
-│
-├── rag-agent/             # Reference agent implementation
-│   ├── training/          # Training pipeline
-│   ├── proofs/            # ZK proof generation
-│   └── validation/        # Self-validation tools
-│
-├── smart-contracts/       # Protocol smart contracts
-│   ├── Staking.sol        # Provider staking mechanism
-│   ├── Registry.sol       # Agent registry
-│   ├── Validation.sol     # Validator consensus
-│   ├── Rewards.sol        # Fee distribution
-│   └── Governance.sol     # Protocol governance
-│
-├── zk-circuits/           # Zero-knowledge proof circuits
-│   ├── training-proof/    # Verify training occurred
-│   ├── capability-proof/  # Verify agent capabilities
-│   └── data-proof/        # Verify data quality
-│
-├── validator-node/        # Validator node software
-│   ├── test-suites/       # Standardized tests
-│   ├── consensus/         # BFT consensus implementation
-│   └── monitoring/        # Network health monitoring
-│
-└── ui/                    # Protocol explorer & dashboard
-    ├── agent-registry/    # Browse registered agents
-    ├── validator-dash/    # Validator dashboard
-    └── analytics/         # Network analytics
-```
 
 ### Tech Stack
 
@@ -299,18 +195,6 @@ Just as decentralized systems disrupted traditional models by removing intermedi
 - **Innovation Incentives**: Better agents earn more
 - **Global Participation**: Permissionless and borderless
 
-### The Future
-
-Imagine a world where:
-- AI agents compete on merit, not marketing budgets
-- Training processes are transparent and verifiable
-- Users have guaranteed performance with cryptographic SLAs
-- Small AI developers can compete with tech giants
-- Reputation is earned, not bought
-- Privacy and quality coexist through zero-knowledge proofs
-
-**That's the promise of PoT Protocol.**
-
 ##  Getting Started (Conceptual Implementation)
 
 This repository contains a **proof-of-concept** implementation demonstrating the core ideas:
@@ -333,71 +217,12 @@ cd ui && node server.js
 
 ### What's Implemented
 
-✅ **Multi-Agent Orchestration**: MetaSuperAgent intelligently routes tasks  
-✅ **Agent Registry**: Basic registration and capability tracking  
-✅ **ZK Circuit Framework**: Proof generation structure  
-✅ **Smart Contract Stubs**: Basic staking and validation contracts  
-✅ **Validator Simulation**: Consensus mechanism simulation  
-✅ **Dashboard UI**: Explore agents and view network activity  
-
-### What's Conceptual
-
-🔬 **Full Consensus Implementation**: Requires production validator network  
-🔬 **Economic Model**: Token distribution and fee markets need simulation  
-🔬 **ZK Proof Verification**: Training proofs need domain-specific circuits  
-🔬 **Decentralized Storage**: IPFS integration for model metadata  
-🔬 **Governance**: On-chain voting mechanisms  
-
-##  Open Questions & Research
-
-This is an **ambitious vision**. Key challenges to solve:
-
-1. **Training Verification**: How to prove training quality without revealing data?
-2. **Capability Testing**: What constitutes sufficient validation?
-3. **Economic Security**: What stake/reward ratios prevent attacks?
-4. **Scalability**: How to handle millions of agents and queries?
-5. **Standardization**: Who defines performance benchmarks?
-6. **Privacy vs. Verification**: Balance ZK proofs with transparency needs
-7. **Cold Start**: How to bootstrap initial providers and validators?
-
-## Status
-
-**Stage**: Conceptual / Proof-of-Concept  
-**Goal**: Demonstrate the vision and core mechanisms  
-**Invitation**: This is a thought experiment and technical exploration  
-
-### What This Is
-
-- A vision for how AI agent economies could work
-- A technical prototype exploring key mechanisms
-- An invitation for collaboration and feedback
-- Research into decentralized AI coordination
-
-### What This Isn't
-
-- A production-ready protocol (yet)
-- Financial advice or investment opportunity
-- A complete economic model
-- A guarantee of feasibility
-
-##  Contributing & Collaboration
-
-This is an **open exploration** of radical ideas. Interested in:
-
-- **Research**: Economic modeling, consensus mechanisms, ZK circuit design
-- **Development**: Building components of the vision
-- **Critique**: Finding flaws, edge cases, attack vectors
-- **Ideation**: Better approaches to the core problems
-
-**This is experimental. This is ambitious. This might not work.**  
-**But what if it does?**
-
-##  Further Reading
-
-- **Zero-Knowledge Proofs**: Learn about ZK-SNARKs and ZK-STARKs
-- **Byzantine Fault Tolerance**: Understanding consensus in adversarial networks
-- **Mechanism Design**: Economic incentives in distributed systems
-- **Agent-Based Economics**: Multi-agent systems and game theory
+**Multi-Agent Orchestration**: MetaSuperAgent intelligently routes tasks  
+**Agent Registry**: Basic registration and capability tracking  
+**ZK Circuit Framework**: Proof generation structure  
+**Smart Contract Stubs**: Basic staking and validation contracts  
+**Validator Simulation**: Consensus mechanism simulation  
+**Dashboard UI**: Explore agents and view network activity  
 
 ##  License
 
