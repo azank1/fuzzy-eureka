@@ -403,15 +403,6 @@ This is an **open exploration** of radical ideas. Interested in:
 
 MIT License - This is research and exploration, shared freely
 
----
-
-##  The Philosophical Question
-
-If AI agents can be trained, verified, and orchestrated in a trustless manner—creating an economy where quality is provable and rewards flow to merit—what does that mean for the future of intelligence itself?
-
-**PoT Protocol asks: Can we build an economy for AI that's as resilient and trustless as the best decentralized systems, but as intelligent and adaptive as the best AI?**
-
-*This is the experiment.*
 
 ---
 
