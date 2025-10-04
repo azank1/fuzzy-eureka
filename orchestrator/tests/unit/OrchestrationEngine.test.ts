@@ -1,6 +1,6 @@
 import { OrchestrationEngine } from '../../src/core/OrchestrationEngine';
 import { MockAdapter } from '../../src/adapters/MockAdapter';
-import { OrchestrationPlan } from '../../src/types';
+import { OrchestrationPlan } from '../../src/types/index';
 
 describe('OrchestrationEngine', () => {
   let engine: OrchestrationEngine;

@@ -1,7 +1,7 @@
 import { Executor } from '../../src/core/Executor';
 import { OrchestrationEngine } from '../../src/core/OrchestrationEngine';
 import { MockAdapter } from '../../src/adapters/MockAdapter';
-import { OrchestrationPlan } from '../../src/types';
+import { OrchestrationPlan } from '../../src/types/index';
 
 describe('Executor', () => {
   let executor: Executor;
@@ -144,7 +144,7 @@ describe('Executor', () => {
         if (callCount < 3) {
           throw new Error('Temporary failure');
         }
-        return { success: true, data: 'success after retries' };
+        return { success: true, output: 'success after retries', data: 'success after retries' };
       };
       
       engine.registerAdapter('flakey-agent', flakeyAdapter);

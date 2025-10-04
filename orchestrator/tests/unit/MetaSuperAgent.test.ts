@@ -109,7 +109,7 @@ describe('MetaSuperAgent', () => {
       const workflow = metaAgent.createWorkflow(task, agents);
 
       expect(workflow.steps.length).toBeGreaterThanOrEqual(2);
-      expect(workflow.steps.map(s => s.agentId)).toContain('rag-agent');
+      expect(workflow.steps.map((s: any) => s.agentId)).toContain('rag-agent');
     });
 
     it('should maintain proper data flow between steps', () => {

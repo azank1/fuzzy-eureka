@@ -13,14 +13,16 @@ describe('MockAdapter', () => {
       const result = await adapter.call(input);
 
       expect(result).toBeDefined();
-      expect(result.success).toBe(true);
+      expect(result.output).toBeDefined();
+      expect(result.output.success).toBe(true);
     });
 
     it('should return result with timestamp', async () => {
       const result = await adapter.call({ task: 'test' });
 
-      expect(result.timestamp).toBeDefined();
-      expect(typeof result.timestamp).toBe('number');
+      expect(result.output).toBeDefined();
+      expect(result.output.timestamp).toBeDefined();
+      expect(typeof result.output.timestamp).toBe('number');
     });
 
     it('should handle different input types', async () => {
@@ -33,7 +35,8 @@ describe('MockAdapter', () => {
 
       for (const input of inputs) {
         const result = await adapter.call(input);
-        expect(result.success).toBe(true);
+        expect(result.output).toBeDefined();
+        expect(result.output.success).toBe(true);
       }
     });
 
@@ -41,7 +44,8 @@ describe('MockAdapter', () => {
       const input = { task: 'echo test', message: 'hello' };
       const result = await adapter.call(input);
 
-      expect(result.input).toEqual(input);
+      expect(result.output).toBeDefined();
+      expect(result.output.input).toEqual(input);
     });
 
     it('should simulate processing delay', async () => {
@@ -111,7 +115,8 @@ describe('MockAdapter', () => {
       adapter.setErrorMode(false);
 
       const result = await adapter.call({ task: 'test' });
-      expect(result.success).toBe(true);
+      expect(result.output).toBeDefined();
+      expect(result.output.success).toBe(true);
     });
   });
 

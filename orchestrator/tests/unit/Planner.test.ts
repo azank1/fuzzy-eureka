@@ -35,9 +35,9 @@ describe('Planner', () => {
       const plan = planner.generatePlan(task);
 
       expect(plan.steps.length).toBeGreaterThanOrEqual(3);
-      expect(plan.steps.map(s => s.agentId)).toContain('rag-agent');
-      expect(plan.steps.map(s => s.agentId)).toContain('http-agent');
-      expect(plan.steps.map(s => s.agentId)).toContain('zk-agent');
+      expect(plan.steps.map((s: any) => s.agentId)).toContain('rag-agent');
+      expect(plan.steps.map((s: any) => s.agentId)).toContain('http-agent');
+      expect(plan.steps.map((s: any) => s.agentId)).toContain('zk-agent');
     });
 
     it('should assign proper input/output keys', () => {
