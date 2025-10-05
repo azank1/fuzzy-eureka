@@ -13,6 +13,7 @@
     "demo": "ts-node src/examples/demo.ts",
     "demo:full": "ts-node src/examples/comprehensive-demo.ts",
     "demo:http": "ts-node src/examples/http-agent-demo.ts",
+    "demo:integration": "ts-node src/examples/integration-demo.ts",
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "eslint 'src/**/*.ts' --fix"
   },
