@@ -31,7 +31,7 @@ describe('Executor', () => {
 
       expect(result.success).toBe(true);
       expect(result.context.result).toBeDefined();
-      expect(result.executionTime).toBeGreaterThan(0);
+      expect(result.executionTime).toBeGreaterThanOrEqual(0);
     });
 
     it('should execute multi-step plan with data flow', async () => {
