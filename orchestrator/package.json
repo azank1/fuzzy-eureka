@@ -14,14 +14,18 @@
     "demo:full": "ts-node src/examples/comprehensive-demo.ts",
     "demo:http": "ts-node src/examples/http-agent-demo.ts",
     "demo:integration": "ts-node src/examples/integration-demo.ts",
+    "demo:rag": "ts-node src/examples/rag-agent-demo.ts",
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "eslint 'src/**/*.ts' --fix"
   },
   "dependencies": {
+    "@pinecone-database/pinecone": "^6.1.2",
     "axios": "^1.12.2",
     "axios-retry": "^4.5.0",
     "bottleneck": "^2.19.5",
-    "ethers": "^6.13.5"
+    "ethers": "^6.13.5",
+    "openai": "^6.1.0",
+    "tiktoken": "^1.0.22"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",
