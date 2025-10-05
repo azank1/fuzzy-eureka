@@ -1,129 +1,255 @@
-# PoT Protocol: Proof of Training
+# PoT Consensus# PoT Protocol: Proof of Training
 
-> **A Decentralized Consensus Network for AI Agent Economies**
 
-[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/yourusername/fuzzy-eureka/releases/tag/v0.1.0)
+
+A decentralized consensus network for AI agent coordination with provable training and validator consensus.> **A Decentralized Consensus Network for AI Agent Economies**
+
+
+
+## Architecture[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/yourusername/fuzzy-eureka/releases/tag/v0.1.0)
+
 [![Tests](https://img.shields.io/badge/tests-63%2F63%20passing-success.svg)](#testing)
-[![Performance](https://img.shields.io/badge/routing-<1ms-success.svg)](#performance)
-[![Stage](https://img.shields.io/badge/stage-0%20complete-success.svg)](STAGE-0-COMPLETE.md)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-**Foundation Ready** - All 63 tests passing, <1ms routing performance, comprehensive documentation. [View completion details →](STAGE-0-COMPLETE.md)
 
----
-### The PoT Cycle
+```[![Performance](https://img.shields.io/badge/routing-<1ms-success.svg)](#performance)
 
-```
-┌──────────────┐
-│   PROVIDER   │──┐
-│ Trains Agent │  │
-└──────────────┘  │
-                  ▼
-         ┌─────────────────┐
-         │ Generate ZK      │
-         │ Training Proof   │
-         └─────────────────┘
-                  │
-                  ▼
-         ┌─────────────────┐
+┌─────────────────────────────────────────┐[![Stage](https://img.shields.io/badge/stage-0%20complete-success.svg)](STAGE-0-COMPLETE.md)
+
+│         Orchestration Engine            │[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+│  - Task planning & decomposition        │**Foundation Ready** - All 63 tests passing, <1ms routing performance, comprehensive documentation. [View completion details →](STAGE-0-COMPLETE.md)
+
+│  - Agent routing & selection            │
+
+│  - Multi-agent coordination             │---
+
+└──────────────┬──────────────────────────┘### The PoT Cycle
+
+               │
+
+       ┌───────┴────────┐```
+
+       │  Agent Registry │┌──────────────┐
+
+       │  - HTTP Agent   ││   PROVIDER   │──┐
+
+       │  - RAG Agent    ││ Trains Agent │  │
+
+       │  - ZK Circuit   │└──────────────┘  │
+
+       └───────┬────────┘                  ▼
+
+               │         ┌─────────────────┐
+
+    ┌──────────┴──────────┐         │ Generate ZK      │
+
+    │   Validator Network  │         │ Training Proof   │
+
+    │   - Consensus (>50%) │         └─────────────────┘
+
+    │   - Proof validation │                  │
+
+    └─────────────────────┘                  ▼
+
+```         ┌─────────────────┐
+
          │  Submit Proof   │
-         │  + Stake Tokens │
+
+## Components         │  + Stake Tokens │
+
          └─────────────────┘
-                  │
-                  ▼
-┌─────────────────────────────┐
-│   VALIDATOR NETWORK         │
-│  • Test agent performance   │
-│  • Verify ZK proofs         │──── Consensus ────┐
+
+### Orchestrator                  │
+
+Multi-agent orchestration system with intelligent routing.                  ▼
+
+- **MetaSuperAgent**: Routes tasks to specialized agents┌─────────────────────────────┐
+
+- **Planner**: Decomposes complex tasks into subtasks│   VALIDATOR NETWORK         │
+
+- **Executor**: Executes tasks with retry logic│  • Test agent performance   │
+
+- **AgentRegistry**: Manages agent capabilities│  • Verify ZK proofs         │──── Consensus ────┐
+
 │  • Score capabilities       │                   │
-└─────────────────────────────┘                   │
-                                                  ▼
-                                         ┌──────────────┐
-                                         │   APPROVED   │
+
+### Agents└─────────────────────────────┘                   │
+
+- **HTTP Agent**: External API calls with retry & rate limiting                                                  ▼
+
+- **RAG Agent**: Vector search and semantic retrieval (in progress)                                         ┌──────────────┐
+
+- **ZK Circuit**: Zero-knowledge proof generation (in progress)                                         │   APPROVED   │
+
                                          │ Agent Listed │
-                                         └──────────────┘
-                                                  │
-                                                  ▼
+
+### Smart Contracts                                         └──────────────┘
+
+- **PoL.sol**: Proof of Learning staking contract                                                  │
+
+- Agent registration and validation (in progress)                                                  ▼
+
                                       ┌──────────────────────┐
-                                      │  USERS ACCESS AGENT  │
+
+## Status                                      │  USERS ACCESS AGENT  │
+
                                       │  • Pay per use       │
-                                      │  • Cryptographic SLA │
-                                      └──────────────────────┘
+
+**Stage 0**: Foundation Complete - 91/91 tests passing                                        │  • Cryptographic SLA │
+
+**Stage 1**: Real agents implementation - HTTP Agent complete                                      └──────────────────────┘
+
                                                   │
-                                                  ▼
-                                      ┌──────────────────────┐
-                                      │  REWARDS DISTRIBUTED │
-                                      │  • Provider earns    │
-                                      │  • Validators earn   │
-                                      │  • Reputation grows  │
-                                      └──────────────────────┘
+
+### HTTP Agent (Production Ready)                                                  ▼
+
+- Axios integration with retry logic                                      ┌──────────────────────┐
+
+- Rate limiting (10 concurrent, 100ms min)                                      │  REWARDS DISTRIBUTED │
+
+- Error handling (network, timeout, HTTP)                                      │  • Provider earns    │
+
+- All HTTP methods supported                                      │  • Validators earn   │
+
+- Cost calculation and performance tracking                                      │  • Reputation grows  │
+
+- 13 unit tests passing                                      └──────────────────────┘
+
 ```
+
+## Quick Start
 
 ##  The Vision
 
-What if AI agents could form an economy where trust isn't given—it's earned through provable training and validated performance? PoT Protocol introduces a revolutionary consensus mechanism that creates a trustless marketplace for AI agents, where providers compete, validators ensure quality, and users access verifiable intelligence.
+```bash
 
-### The Problem
+# Install dependenciesWhat if AI agents could form an economy where trust isn't given—it's earned through provable training and validated performance? PoT Protocol introduces a revolutionary consensus mechanism that creates a trustless marketplace for AI agents, where providers compete, validators ensure quality, and users access verifiable intelligence.
 
-In today's AI landscape:
-- **Trust is Centralized**: Users must trust corporate AI providers without transparency
+npm install
+
+cd orchestrator && npm install### The Problem
+
+
+
+# Run testsIn today's AI landscape:
+
+npm test- **Trust is Centralized**: Users must trust corporate AI providers without transparency
+
 - **No Accountability**: Models fail silently with no recourse or verification
-- **Closed Training**: Training data and processes are opaque black boxes
-- **Provider Lock-in**: Users are captive to single vendors
-- **No Economic Incentives**: No mechanism to reward quality or punish poor performance
 
-### The Solution: Proof of Training
+# HTTP Agent demo- **Closed Training**: Training data and processes are opaque black boxes
 
-PoT Protocol establishes a **decentralized consensus network** where:
+npm run demo:http- **Provider Lock-in**: Users are captive to single vendors
 
-1. **Providers Stake to Participate**: AI agents must stake tokens to join the network
-2. **Training is Provable**: Zero-knowledge proofs verify training occurred without revealing data
-3. **Validators Reach Consensus**: Distributed validators assess agent performance
+```- **No Economic Incentives**: No mechanism to reward quality or punish poor performance
+
+
+
+## Test Results### The Solution: Proof of Training
+
+
+
+```PoT Protocol establishes a **decentralized consensus network** where:
+
+Test Suites: 8 passed, 8 total
+
+Tests:       104 passed, 104 total1. **Providers Stake to Participate**: AI agents must stake tokens to join the network
+
+Time:        ~8s2. **Training is Provable**: Zero-knowledge proofs verify training occurred without revealing data
+
+```3. **Validators Reach Consensus**: Distributed validators assess agent performance
+
 4. **Quality Earns Rewards**: High-performing agents earn fees and reputation
-5. **Users Get Guarantees**: Cryptographic proofs ensure agent capabilities
 
-## 🏗️ How It Works
+## Requirements5. **Users Get Guarantees**: Cryptographic proofs ensure agent capabilities
 
-### The PoT Consensus Mechanism
 
-```
+
+- Node.js 18+## 🏗️ How It Works
+
+- TypeScript 5.0+
+
+- Jest for testing### The PoT Consensus Mechanism
+
+
+
+## Development```
+
 ┌─────────────────────────────────────────────────────────────┐
-│                    PoT PROTOCOL LAYERS                       │
-├─────────────────────────────────────────────────────────────┤
-│                                                               │
-│  1. STAKING LAYER                                            │
-│     └─ Providers stake tokens to register agents            │
-│     └─ Slashing mechanism for misbehavior                   │
-│     └─ Stake amount = minimum quality guarantee              │
-│                                                               │
-│  2. TRAINING VERIFICATION (Zero-Knowledge Proofs)            │
-│     └─ ZK-SNARKs prove training occurred                    │
-│     └─ Circuits verify: data quality, model updates, epochs │
-│     └─ Privacy-preserving: data never revealed              │
-│                                                               │
-│  3. CONSENSUS LAYER (Validator Network)                      │
-│     └─ Validators test agent performance                     │
-│     └─ Byzantine Fault Tolerant consensus                    │
-│     └─ Multi-signature validation of capabilities            │
-│                                                               │
-│  4. REPUTATION & REWARDS                                     │
-│     └─ On-chain reputation scores                            │
-│     └─ Performance-based token distribution                  │
-│     └─ Slashing for fraud or poor performance                │
-│                                                               │
-│  5. ORCHESTRATION LAYER                                      │
-│     └─ Intelligent routing to best agents                    │
-│     └─ Multi-agent task decomposition                        │
-│     └─ Fallback mechanisms for reliability                   │
-│                                                               │
-└─────────────────────────────────────────────────────────────┘
-```
 
-##  Use Cases
+```bash│                    PoT PROTOCOL LAYERS                       │
+
+# Orchestrator├─────────────────────────────────────────────────────────────┤
+
+cd orchestrator│                                                               │
+
+npm run build    # Compile TypeScript│  1. STAKING LAYER                                            │
+
+npm test         # Run all tests│     └─ Providers stake tokens to register agents            │
+
+npm run demo:http # HTTP Agent demo│     └─ Slashing mechanism for misbehavior                   │
+
+│     └─ Stake amount = minimum quality guarantee              │
+
+# Smart Contracts│                                                               │
+
+cd PoL-hardhat│  2. TRAINING VERIFICATION (Zero-Knowledge Proofs)            │
+
+npm install│     └─ ZK-SNARKs prove training occurred                    │
+
+npx hardhat test│     └─ Circuits verify: data quality, model updates, epochs │
+
+│     └─ Privacy-preserving: data never revealed              │
+
+# ZK Circuits│                                                               │
+
+cd ZK_Circuit│  3. CONSENSUS LAYER (Validator Network)                      │
+
+npm install│     └─ Validators test agent performance                     │
+
+# See circuits/README for circuit compilation│     └─ Byzantine Fault Tolerant consensus                    │
+
+```│     └─ Multi-signature validation of capabilities            │
+
+│                                                               │
+
+## Project Structure│  4. REPUTATION & REWARDS                                     │
+
+│     └─ On-chain reputation scores                            │
+
+```│     └─ Performance-based token distribution                  │
+
+orchestrator/        TypeScript orchestration engine│     └─ Slashing for fraud or poor performance                │
+
+├── src/│                                                               │
+
+│   ├── core/       OrchestrationEngine, Planner, Executor│  5. ORCHESTRATION LAYER                                      │
+
+│   ├── adapters/   HTTP, RAG, ZK Circuit agents│     └─ Intelligent routing to best agents                    │
+
+│   ├── registry/   AgentRegistry│     └─ Multi-agent task decomposition                        │
+
+│   └── examples/   Demo scripts│     └─ Fallback mechanisms for reliability                   │
+
+├── tests/          Unit and integration tests│                                                               │
+
+PoL-hardhat/        Solidity staking contracts└─────────────────────────────────────────────────────────────┘
+
+ZK_Circuit/         Circom zero-knowledge circuits```
+
+rag-agent/          Vector search implementation
+
+ui/                 Dashboard interface##  Use Cases
+
+```
 
 ### For AI Providers
 
+## License
+
 **Monetize Your Models**:
-- List agents and earn per query
+
+MIT- List agents and earn per query
+
 - Build reputation through proven performance
 - Compete on quality, not just marketing
 - Transparent revenue sharing
