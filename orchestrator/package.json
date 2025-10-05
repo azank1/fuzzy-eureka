@@ -12,6 +12,7 @@
     "test:coverage": "jest --coverage",
     "demo": "ts-node src/examples/demo.ts",
     "demo:full": "ts-node src/examples/comprehensive-demo.ts",
+    "demo:http": "ts-node src/examples/http-agent-demo.ts",
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "eslint 'src/**/*.ts' --fix"
   },

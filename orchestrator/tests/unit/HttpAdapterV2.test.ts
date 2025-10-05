@@ -1,19 +1,30 @@
 import { HttpAdapter } from '../../src/adapters/HttpAdapterV2';
 import axios from 'axios';
 
-// Mock axios
+// Mock axios module
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe('HttpAdapter', () => {
   let adapter: HttpAdapter;
+  let mockAxiosInstance: any;
 
   beforeEach(() => {
-    adapter = new HttpAdapter();
     jest.clearAllMocks();
     
-    // Mock axios.create to return mocked axios instance
-    mockedAxios.create = jest.fn().mockReturnValue(mockedAxios);
+    // Create a mock axios instance
+    mockAxiosInstance = {
+      request: jest.fn(),
+      defaults: {
+        timeout: 30000,
+        validateStatus: jest.fn()
+      }
+    };
+    
+    // Mock axios.create to return our mock instance
+    mockedAxios.create = jest.fn().mockReturnValue(mockAxiosInstance);
+    
+    adapter = new HttpAdapter();
   });
 
   describe('constructor', () => {
@@ -66,7 +77,7 @@ describe('HttpAdapter', () => {
         headers: {}
       };
 
-      mockedAxios.request = jest.fn().mockResolvedValue(mockResponse);
+      mockAxiosInstance.request = jest.fn().mockResolvedValue(mockResponse);
 
       const result = await adapter.call({
         input: {
@@ -91,7 +102,7 @@ describe('HttpAdapter', () => {
         headers: {}
       };
 
-      mockedAxios.request = jest.fn().mockResolvedValue(mockResponse);
+      mockAxiosInstance.request = jest.fn().mockResolvedValue(mockResponse);
 
       const methods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'] as const;
       
