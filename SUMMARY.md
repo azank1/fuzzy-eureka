@@ -33,17 +33,27 @@
    - Auto-refresh every 10s
    - Agent management (view/delete)
 
+6. **Claude-Flow Planner Service** ✨ NEW
+   - Express server on port 7070
+   - POST /plan endpoint for task decomposition
+   - GET /health endpoint for status
+   - Mock mode (keyword-based planning)
+   - Ready for Claude AI integration
+
 ---
 
 ## Quick Commands
 
-### Start Servers
+### Start All Services (3 Terminals)
 ```bash
-# Terminal 1
+# Terminal 1 - Registry
 npm run registry
 
-# Terminal 2
+# Terminal 2 - UI Dashboard
 cd src/ui && npm run dev
+
+# Terminal 3 - Claude-Flow Planner
+npm run cf:run
 ```
 
 ### Test Registry
