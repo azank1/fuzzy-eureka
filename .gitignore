@@ -9,6 +9,9 @@ dist/
 build/
 *.tsbuildinfo
 
+# Documentation (keep local only)
+docs/
+
 # Testing
 coverage/
 *.test.db
