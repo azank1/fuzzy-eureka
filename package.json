@@ -1,0 +1,43 @@
+{
+  "name": "pot-consensus",
+  "version": "1.0.0",
+  "description": "**Proof of Task (PoT) Consensus** - AI-powered meta-orchestration framework for multi-agent task coordination.",
+  "main": "dist/demo.js",
+  "type": "commonjs",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/demo.ts",
+    "registry": "tsx src/registry/api/server.ts",
+    "cli": "tsx src/sdk/cli/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azank1/PoT-Consensus.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/azank1/PoT-Consensus/issues"
+  },
+  "homepage": "https://github.com/azank1/PoT-Consensus#readme",
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.7.0",
+    "axios": "^1.12.2",
+    "better-sqlite3": "^12.4.1",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "claude-flow": "file:vendor/claude-flow"
+  }
+}

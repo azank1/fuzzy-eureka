@@ -2,22 +2,40 @@
  * HttpAdapter.ts
  * 
  * Purpose: REST API / HTTP adapter
- * 
- * Responsibilities:
- * - Make HTTP requests (GET, POST, PUT, DELETE)
- * - Handle authentication headers
- * - Parse JSON responses
- * - Error handling and retries
- * 
- * Input Format:
- * {
- *   endpoint: "https://api.example.com/resource",
- *   method?: "GET" | "POST" | "PUT" | "DELETE",
- *   headers?: {},
- *   body?: {}
- * }
- * 
- * Output: Response data from API
  */
 
-// TODO: Implementation placeholder
+import axios, { AxiosRequestConfig } from 'axios';
+import { Logger } from '../../core/logs/Logger';
+
+export class HttpAdapter {
+  async invoke(input: any): Promise<any> {
+    const { endpoint, method = 'GET', headers = {}, body, params } = input;
+
+    Logger.info(`[HttpAdapter] ${method} ${endpoint}`);
+
+    try {
+      const config: AxiosRequestConfig = {
+        method,
+        url: endpoint,
+        headers: {
+          'Content-Type': 'application/json',
+          ...headers
+        },
+        ...(params && { params }),
+        ...(body && { data: body }),
+        timeout: 10000
+      };
+
+      const response = await axios(config);
+      Logger.info(`[HttpAdapter] ✓ Success`, { status: response.status });
+      
+      return response.data;
+    } catch (error: any) {
+      Logger.error(`[HttpAdapter] ✗ Failed`, {
+        message: error.message,
+        status: error.response?.status
+      });
+      throw error;
+    }
+  }
+}
