@@ -1,0 +1,20 @@
+{
+  "id": "agent.mcp.summarize",
+  "name": "MCP Sentiment Analyzer",
+  "type": "mcp",
+  "version": "1.0.0",
+  "description": "Analyzes sentiment using Model Context Protocol",
+  "protocol": "mcp",
+  "endpoint": "http://localhost:8080/mcp",
+  "capabilities": ["sentiment-analysis", "summarization", "nlp"],
+  "methods": [
+    {
+      "name": "analyze_sentiment",
+      "params": { "text": "string" }
+    },
+    {
+      "name": "summarize",
+      "params": { "text": "string", "max_length": "number" }
+    }
+  ]
+}

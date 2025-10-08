@@ -1,0 +1,10 @@
+{
+  "id": "agent.n8n.workflow",
+  "name": "n8n Workflow Agent",
+  "type": "n8n",
+  "version": "1.0.0",
+  "description": "Executes n8n workflows via webhook",
+  "protocol": "n8n",
+  "endpoint": "http://localhost:5678/webhook/process",
+  "capabilities": ["workflow", "automation"]
+}

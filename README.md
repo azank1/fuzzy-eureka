@@ -1,118 +1,143 @@
-# PoT Consensus# PoT Protocol: Proof of Training
+# PoT-Consensus
 
+**Proof of Task (PoT) Consensus** - AI-powered meta-orchestration framework for multi-agent task coordination.
 
+---
 
-A decentralized consensus network for AI agent coordination with provable training and validator consensus.> **A Decentralized Consensus Network for AI Agent Economies**
-
-
-
-## Architecture[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/yourusername/fuzzy-eureka/releases/tag/v0.1.0)
-
-[![Tests](https://img.shields.io/badge/tests-63%2F63%20passing-success.svg)](#testing)
-
-```[![Performance](https://img.shields.io/badge/routing-<1ms-success.svg)](#performance)
-
-┌─────────────────────────────────────────┐[![Stage](https://img.shields.io/badge/stage-0%20complete-success.svg)](STAGE-0-COMPLETE.md)
-
-│         Orchestration Engine            │[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-
-│  - Task planning & decomposition        │**Foundation Ready** - All 63 tests passing, <1ms routing performance, comprehensive documentation. [View completion details →](STAGE-0-COMPLETE.md)
-
-│  - Agent routing & selection            │
-
-│  - Multi-agent coordination             │---
-
-└──────────────┬──────────────────────────┘### The PoT Cycle
-
-               │
-
-       ┌───────┴────────┐```
-
-       │  Agent Registry │┌──────────────┐
-
-       │  - HTTP Agent   ││   PROVIDER   │──┐
-
-       │  - RAG Agent    ││ Trains Agent │  │
-
-       │  - ZK Circuit   │└──────────────┘  │
-
-       └───────┬────────┘                  ▼
-
-               │         ┌─────────────────┐
-
-    ┌──────────┴──────────┐         │ Generate ZK      │
-
-    │   Validator Network  │         │ Training Proof   │
-
-    │   - Consensus (>50%) │         └─────────────────┘
-
-    │   - Proof validation │                  │
-
-    └─────────────────────┘                  ▼
-
-```         ┌─────────────────┐
-
-         │  Submit Proof   │
-
-## Components         │  + Stake Tokens │
-
-         └─────────────────┘
-
-### Orchestrator                  │
-
-Multi-agent orchestration system with intelligent routing.                  ▼
-
-- **MetaSuperAgent**: Routes tasks to specialized agents┌─────────────────────────────┐
-
-- **Planner**: Decomposes complex tasks into subtasks│   VALIDATOR NETWORK         │
-
-- **Executor**: Executes tasks with retry logic│  • Test agent performance   │
-
-- **AgentRegistry**: Manages agent capabilities│  • Verify ZK proofs         │──── Consensus ────┐
-
-│  • Score capabilities       │                   │
-
-### Agents└─────────────────────────────┘                   │
-
-- **HTTP Agent**: External API calls with retry & rate limiting                                                  ▼
-
-- **RAG Agent**: Vector search and semantic retrieval (in progress)                                         ┌──────────────┐
-
-- **ZK Circuit**: Zero-knowledge proof generation (in progress)                                         │   APPROVED   │
-
-                                         │ Agent Listed │
-
-### Smart Contracts                                         └──────────────┘
-
-- **PoL.sol**: Proof of Learning staking contract                                                  │
-
-- Agent registration and validation (in progress)                                                  ▼
-
-                                      ┌──────────────────────┐
-
-## Status                                      │  USERS ACCESS AGENT  │
-
-                                      │  • Pay per use       │
-
-**Stage 0**: Foundation Complete - 91/91 tests passing                                        │  • Cryptographic SLA │
-
-**Stage 1**: Real agents implementation - HTTP Agent complete                                      └──────────────────────┘
-
-                                                  │
-
-### HTTP Agent (Production Ready)                                                  ▼
-
-- Axios integration with retry logic                                      ┌──────────────────────┐
-
-- Rate limiting (10 concurrent, 100ms min)                                      │  REWARDS DISTRIBUTED │
-
-- Error handling (network, timeout, HTTP)                                      │  • Provider earns    │
-
-- All HTTP methods supported                                      │  • Validators earn   │
-
-- Cost calculation and performance tracking                                      │  • Reputation grows  │
-
-- 13 unit tests passing                                      └──────────────────────┘
+## 🎯 Architecture Overview
 
 ```
+PoT-Consensus/
+├── src/
+│   ├── core/              # Core orchestration engine
+│   ├── adapters/          # Protocol adapters (HTTP, n8n, MCP)
+│   ├── registry/          # Agent registry with REST API
+│   └── sdk/               # CLI and SDKs
+├── vendor/
+│   └── claude-flow/       # Claude-Flow SDK (git submodule)
+├── manifests/             # Agent configuration files
+├── tests/                 # Test suites
+└── data/                  # SQLite database
+```
 
+---
+
+## 📐 Component Architecture
+
+### **Core Components**
+
+| Component | Purpose | Dependencies |
+|-----------|---------|--------------|
+| **ClaudePlanner** | AI-powered task decomposition | Claude-Flow SDK (local) |
+| **Executor** | Sequential task execution | Adapters, ContextManager |
+| **Orchestrator** | Main coordinator | Planner, Executor |
+| **ContextManager** | Variable substitution & context | None |
+| **Logger** | Logging utility | None |
+
+### **Adapters**
+
+| Adapter | Protocol | Use Case |
+|---------|----------|----------|
+| **HttpAdapter** | REST/HTTP | API calls, webhooks |
+| **N8nAdapter** | n8n Webhooks | Workflow automation |
+| **McpAdapter** | JSON-RPC 2.0 | Model Context Protocol |
+
+### **Registry System**
+
+| Component | Technology | Purpose |
+|-----------|-----------|---------|
+| **API Server** | Express | REST API for agent management |
+| **DatabaseManager** | SQLite | Agent storage and retrieval |
+
+---
+
+## 🔄 Data Flow
+
+```
+User Goal
+  ↓
+ClaudePlanner (AI decomposition)
+  ↓
+Task Plan [Task, Task, Task...]
+  ↓
+Executor (sequential execution)
+  ↓
+AdapterFactory (protocol routing)
+  ↓
+Adapter (HTTP/n8n/MCP)
+  ↓
+External Service
+  ↓
+Results Aggregation
+  ↓
+Final Output
+```
+
+---
+
+## 🛠️ Dependencies
+
+### Git Submodules
+- **claude-flow**: `vendor/claude-flow` - AI-powered flow orchestration SDK
+  - Repository: https://github.com/ruvnet/claude-flow.git
+  - Usage: Task planning and decomposition
+
+### Setup
+```bash
+# Initialize and update submodules
+git submodule init
+git submodule update
+
+# Or clone with submodules
+git clone --recurse-submodules <repo-url>
+```
+
+---
+
+## 🏗️ Current Status
+
+**Phase**: Architecture Definition ✅
+
+### Completed
+- ✅ Directory structure created
+- ✅ Component placeholders defined
+- ✅ Manifest templates created
+- ✅ Test structure defined
+- ✅ Claude-Flow added as git submodule
+
+### Pending
+- ⏳ Component implementation
+- ⏳ Integration testing
+- ⏳ End-to-end demo
+- ⏳ Documentation completion
+
+---
+
+## 📋 Next Steps
+
+1. **Implement Core Components**
+   - ClaudePlanner with Claude-Flow integration
+   - Executor with context management
+   - Orchestrator coordination logic
+
+2. **Implement Adapters**
+   - HTTP adapter with axios
+   - n8n webhook integration
+   - MCP JSON-RPC client
+
+3. **Build Registry System**
+   - Express REST API
+   - SQLite database operations
+
+4. **Create CLI Tool**
+   - Commander-based CLI
+   - Register/list/invoke commands
+
+5. **Testing & Demo**
+   - Unit tests for all components
+   - Integration tests
+   - Demo application
+
+---
+
+**Ready for implementation phase** 🚀

@@ -1,0 +1,10 @@
+{
+  "id": "agent.http.fetch_reviews",
+  "name": "HTTP Review Fetcher",
+  "type": "http",
+  "version": "1.0.0",
+  "description": "Fetches customer reviews from REST API",
+  "protocol": "http",
+  "endpoint": "https://jsonplaceholder.typicode.com/comments",
+  "capabilities": ["fetch", "get"]
+}

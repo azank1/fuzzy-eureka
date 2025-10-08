@@ -1,0 +1,3 @@
+[submodule "vendor/claude-flow"]
+	path = vendor/claude-flow
+	url = https://github.com/ruvnet/claude-flow.git

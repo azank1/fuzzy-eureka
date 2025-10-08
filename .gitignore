@@ -1,63 +1,73 @@
-# Documentation (internal use only)
-docs/
-docs/
-
 # Dependencies
 node_modules/
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
-# Build outputs
+# Build output
 dist/
 build/
 *.tsbuildinfo
 
-# Environment variables
+# Testing
+coverage/
+*.test.db
+test-registry.db
+
+# Environment
 .env
 .env.local
 .env.*.local
 
-# IDE
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
-.idea/
-*.swp
-*.swo
-*~
-.DS_Store
+# Database
+data/*.db
+data/*.sqlite
 
 # Logs
-logs/
 *.log
+logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-# Testing
-coverage/
-.nyc_output/
-
-# Hardhat
-cache/
-artifacts/
-typechain-types/
-
-# ZK Circuit artifacts
-*.r1cs
-*.wasm
-*.zkey
-*.sym
-build/
-proofs/*.wtns
-
-# Temporary files
-*.tmp
-*.temp
-.cache/
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
 
 # OS
+.DS_Store
 Thumbs.db
+desktop.ini
+
+# Temp
+tmp/
+temp/
+*.tmp
+*.bak
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Old projects (if any remain)
+pot-consensus/
+orchestrator/
+PoL-hardhat/
+ZK_Circuit/
+rag-agent/
+ui/
+
+# Keep vendor but ignore if needed later
+# vendor/
