@@ -121,4 +121,3 @@ TypeScript + Node.js + Express + SQLite + Next.js + React + Tailwind + Commander
 
 ---
 
-**Status:** Production Ready
