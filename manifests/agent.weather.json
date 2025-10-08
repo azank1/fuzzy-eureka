@@ -1,0 +1,7 @@
+﻿{
+  "id": "agent.weather.api",
+  "name": "Weather API Agent",
+  "protocol": "http",
+  "endpoint": "https://api.openweathermap.org/data/2.5/weather",
+  "capabilities": ["weather", "forecast", "temperature"]
+}

@@ -30,6 +30,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Data directory
+data/logs/
+data/registry.db
+data/*.md
+!data/README.md
+
 # IDE
 .vscode/
 .idea/
@@ -69,5 +75,5 @@ ZK_Circuit/
 rag-agent/
 ui/
 
-# Keep vendor but ignore if needed later
-# vendor/
+# Vendor - submodules managed separately
+vendor/

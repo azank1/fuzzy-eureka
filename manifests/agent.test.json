@@ -1,0 +1,8 @@
+{
+  "id": "agent.test.demo",
+  "name": "Test Demo Agent",
+  "protocol": "http",
+  "endpoint": "https://api.example.com/test",
+  "capabilities": ["test", "demo"],
+  "description": "A test agent for CLI demonstration"
+}

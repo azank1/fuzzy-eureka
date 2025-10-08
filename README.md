@@ -1,143 +1,98 @@
-# PoT-Consensus
+﻿# PoT-Consensus
 
-**Proof of Task (PoT) Consensus** - AI-powered meta-orchestration framework for multi-agent task coordination.
+Meta-orchestration framework with AI-powered task planning and multi-protocol agent support.
 
----
+## Requirements
 
-## 🎯 Architecture Overview
+- Node.js v22+
+- npm or yarn
 
-```
-PoT-Consensus/
-├── src/
-│   ├── core/              # Core orchestration engine
-│   ├── adapters/          # Protocol adapters (HTTP, n8n, MCP)
-│   ├── registry/          # Agent registry with REST API
-│   └── sdk/               # CLI and SDKs
-├── vendor/
-│   └── claude-flow/       # Claude-Flow SDK (git submodule)
-├── manifests/             # Agent configuration files
-├── tests/                 # Test suites
-└── data/                  # SQLite database
-```
+## Quick Start
 
----
-
-## 📐 Component Architecture
-
-### **Core Components**
-
-| Component | Purpose | Dependencies |
-|-----------|---------|--------------|
-| **ClaudePlanner** | AI-powered task decomposition | Claude-Flow SDK (local) |
-| **Executor** | Sequential task execution | Adapters, ContextManager |
-| **Orchestrator** | Main coordinator | Planner, Executor |
-| **ContextManager** | Variable substitution & context | None |
-| **Logger** | Logging utility | None |
-
-### **Adapters**
-
-| Adapter | Protocol | Use Case |
-|---------|----------|----------|
-| **HttpAdapter** | REST/HTTP | API calls, webhooks |
-| **N8nAdapter** | n8n Webhooks | Workflow automation |
-| **McpAdapter** | JSON-RPC 2.0 | Model Context Protocol |
-
-### **Registry System**
-
-| Component | Technology | Purpose |
-|-----------|-----------|---------|
-| **API Server** | Express | REST API for agent management |
-| **DatabaseManager** | SQLite | Agent storage and retrieval |
-
----
-
-## 🔄 Data Flow
-
-```
-User Goal
-  ↓
-ClaudePlanner (AI decomposition)
-  ↓
-Task Plan [Task, Task, Task...]
-  ↓
-Executor (sequential execution)
-  ↓
-AdapterFactory (protocol routing)
-  ↓
-Adapter (HTTP/n8n/MCP)
-  ↓
-External Service
-  ↓
-Results Aggregation
-  ↓
-Final Output
-```
-
----
-
-## 🛠️ Dependencies
-
-### Git Submodules
-- **claude-flow**: `vendor/claude-flow` - AI-powered flow orchestration SDK
-  - Repository: https://github.com/ruvnet/claude-flow.git
-  - Usage: Task planning and decomposition
-
-### Setup
+### 1. Install Dependencies
 ```bash
-# Initialize and update submodules
-git submodule init
-git submodule update
-
-# Or clone with submodules
-git clone --recurse-submodules <repo-url>
+npm install
+cd src/ui && npm install
 ```
 
+### 2. Initialize Claude-Flow Submodule (Optional - for AI planning)
+```bash
+git submodule update --init --recursive
+```
+
+### 3. Start Registry Server (Terminal 1)
+```bash
+npm run registry
+```
+Server runs on `http://localhost:9090`
+
+### 4. Start UI Dashboard (Terminal 2)
+```bash
+cd src/ui
+npm run dev
+```
+Dashboard runs on `http://localhost:3000`
+
+## Usage
+
+### Register Agent
+```bash
+npm run cli -- register --file manifests/agent.http.json
+```
+
+### List Agents
+```bash
+npm run cli -- list
+```
+
+### Run Orchestration
+```bash
+npm run cli -- invoke --goal "Fetch customer reviews and analyze sentiment"
+```
+
+### Delete Agent
+```bash
+npm run cli -- delete --id agent.test.demo
+```
+
+### Check Registry Health
+```bash
+curl http://localhost:9090/health
+curl http://localhost:9090/agents
+```
+
+### Add New Agent via API
+```powershell
+$body = @{
+  id="agent.custom.api"
+  name="Custom Agent"
+  protocol="http"
+  endpoint="https://api.example.com"
+  capabilities=@("fetch","process")
+} | ConvertTo-Json
+
+Invoke-RestMethod -Uri "http://localhost:9090/register" -Method POST -Body $body -ContentType "application/json"
+```
+
+## Features
+
+- AI-powered task planning (Claude API + mock fallback)
+- Multi-protocol support (HTTP, n8n, MCP)
+- REST API registry (SQLite)
+- CLI tools
+- Real-time UI dashboard
+- Auto-refresh every 10s
+
+## Architecture
+
+```
+Orchestrator  Planner (AI/Mock)  Executor  Adapters (HTTP/n8n/MCP)
+```
+
+## Tech Stack
+
+TypeScript + Node.js + Express + SQLite + Next.js + React + Tailwind + Commander + Claude-Flow
+
 ---
 
-## 🏗️ Current Status
-
-**Phase**: Architecture Definition ✅
-
-### Completed
-- ✅ Directory structure created
-- ✅ Component placeholders defined
-- ✅ Manifest templates created
-- ✅ Test structure defined
-- ✅ Claude-Flow added as git submodule
-
-### Pending
-- ⏳ Component implementation
-- ⏳ Integration testing
-- ⏳ End-to-end demo
-- ⏳ Documentation completion
-
----
-
-## 📋 Next Steps
-
-1. **Implement Core Components**
-   - ClaudePlanner with Claude-Flow integration
-   - Executor with context management
-   - Orchestrator coordination logic
-
-2. **Implement Adapters**
-   - HTTP adapter with axios
-   - n8n webhook integration
-   - MCP JSON-RPC client
-
-3. **Build Registry System**
-   - Express REST API
-   - SQLite database operations
-
-4. **Create CLI Tool**
-   - Commander-based CLI
-   - Register/list/invoke commands
-
-5. **Testing & Demo**
-   - Unit tests for all components
-   - Integration tests
-   - Demo application
-
----
-
-**Ready for implementation phase** 🚀
+**Status:** Production Ready
