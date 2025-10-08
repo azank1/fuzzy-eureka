@@ -109,3 +109,34 @@ export class ReceiptWriter {
 
 // Singleton instance
 export const receiptWriter = new ReceiptWriter();
+
+// Helper for Day 2 integration
+export const ReceiptHelper = {
+  async write(snapshot: any): Promise<void> {
+    // Convert RunSnapshot to RunMetrics format
+    if (!snapshot.finished_at) return; // Only write completed runs
+    
+    const metrics: RunMetrics = {
+      runId: snapshot.runId,
+      goal: snapshot.goal,
+      status: snapshot.status,
+      planning_ms: snapshot.planning_ms || 0,
+      execution_ms: snapshot.execution_ms || 0,
+      tasks: snapshot.tasks.map((t: any) => ({
+        id: t.id,
+        agent_id: t.agent_id,
+        protocol: t.protocol,
+        status: t.status,
+        ms: t.ms || 0,
+        ok: t.status === 'done',
+        error: t.error,
+        started_at: Date.now(),
+        finished_at: t.ms ? Date.now() : undefined
+      })),
+      started_at: snapshot.planned_at ? new Date(snapshot.planned_at).getTime() : Date.now(),
+      finished_at: snapshot.finished_at ? new Date(snapshot.finished_at).getTime() : undefined
+    };
+    
+    await receiptWriter.writeReceipt(metrics);
+  }
+};

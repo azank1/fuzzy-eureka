@@ -29,6 +29,22 @@ export class Orchestrator {
     return results;
   }
 
+  async executeTask(task: any): Promise<any> {
+    Logger.info(`[Orchestrator] Executing single task: ${task.agent_id}`);
+    
+    // Get adapter based on protocol
+    const adapter = (this.executor as any).adapters.get(task.protocol);
+    if (!adapter) {
+      throw new Error(`Unknown protocol: ${task.protocol}`);
+    }
+
+    // Execute task via adapter
+    const result = await adapter.invoke(task.input || {});
+    Logger.info(`[Orchestrator] ✓ Task ${task.id} completed`);
+    
+    return result;
+  }
+
   async run(goal: string): Promise<any> {
     Logger.info(`[Orchestrator] Received goal: "${goal}"`);
     

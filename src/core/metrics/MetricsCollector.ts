@@ -236,3 +236,59 @@ export class MetricsCollector {
 
 // Singleton instance
 export const metricsCollector = new MetricsCollector();
+
+// Helper functions for Day 2 integration
+export const MetricsHelper = {
+  recordRun(snapshot: any): void {
+    // Convert RunSnapshot to RunMetrics format
+    const run: RunMetrics = {
+      runId: snapshot.runId,
+      goal: snapshot.goal,
+      status: snapshot.status,
+      planning_ms: snapshot.planning_ms || 0,
+      execution_ms: snapshot.execution_ms || 0,
+      tasks: snapshot.tasks.map((t: any) => ({
+        id: t.id,
+        agent_id: t.agent_id,
+        protocol: t.protocol,
+        status: t.status,
+        ms: t.ms || 0,
+        ok: t.status === 'done',
+        error: t.error,
+        started_at: Date.now(),
+        finished_at: t.ms ? Date.now() : undefined
+      })),
+      started_at: snapshot.planned_at ? new Date(snapshot.planned_at).getTime() : Date.now(),
+      finished_at: snapshot.finished_at ? new Date(snapshot.finished_at).getTime() : undefined
+    };
+
+    (metricsCollector as any).runs.set(run.runId, run);
+    
+    if (run.planning_ms > 0) {
+      (metricsCollector as any).planningTimes.push(run.planning_ms);
+      if ((metricsCollector as any).planningTimes.length > 100) {
+        (metricsCollector as any).planningTimes.shift();
+      }
+    }
+    
+    if (run.execution_ms > 0) {
+      (metricsCollector as any).executionTimes.push(run.execution_ms);
+      if ((metricsCollector as any).executionTimes.length > 100) {
+        (metricsCollector as any).executionTimes.shift();
+      }
+    }
+    
+    run.tasks.forEach(t => {
+      (metricsCollector as any).taskResults.push({ ok: t.ok, protocol: t.protocol });
+    });
+    
+    // Trim task results
+    if ((metricsCollector as any).taskResults.length > 1000) {
+      (metricsCollector as any).taskResults = (metricsCollector as any).taskResults.slice(-1000);
+    }
+  },
+
+  snapshot(): OrchestrationMetrics {
+    return metricsCollector.getMetrics();
+  }
+};
