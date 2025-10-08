@@ -1,0 +1,28 @@
+#!/bin/bash
+# Test Day 2 Implementation - Full Stack Test
+# Run services in separate terminals, then test orchestration
+
+echo "=== Day 2 Testing Guide ==="
+echo ""
+echo "STEP 1: Start all services (in separate terminals)"
+echo "  Terminal 1: cd vendor/claude-flow && npm start"
+echo "  Terminal 2: npm run registry"
+echo "  Terminal 3: npm run orchestrator"
+echo ""
+echo "STEP 2: Verify health checks"
+echo "  curl http://localhost:7070/health"
+echo "  curl http://localhost:9090/health"
+echo "  curl http://localhost:8080/health"
+echo ""
+echo "STEP 3: Run test script"
+echo "  npm run test:day2"
+echo ""
+echo "STEP 4: Check receipts (should appear after orchestration)"
+echo "  ls -la data/logs/$(date +%Y-%m-%d)/"
+echo ""
+echo "Expected outcomes:"
+echo "  ✓ Plan generated (2-3 tasks)"
+echo "  ✓ WebSocket streams 7+ events"
+echo "  ✓ Tasks execute via HTTP adapter"
+echo "  ✓ Receipt written with SHA256 hash"
+echo "  ✓ Metrics show non-zero counters"
