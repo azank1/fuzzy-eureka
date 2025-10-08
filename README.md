@@ -15,23 +15,32 @@ npm install
 cd src/ui && npm install
 ```
 
-### 2. Initialize Claude-Flow Submodule (Optional - for AI planning)
+### 2. Initialize Claude-Flow Submodule
 ```bash
 git submodule update --init --recursive
+cd vendor/claude-flow && npm install --legacy-peer-deps
 ```
 
-### 3. Start Registry Server (Terminal 1)
+### 3. Start Services (3 Terminals)
+
+**Terminal 1 - Registry Server:**
 ```bash
 npm run registry
 ```
 Server runs on `http://localhost:9090`
 
-### 4. Start UI Dashboard (Terminal 2)
+**Terminal 2 - UI Dashboard:**
 ```bash
 cd src/ui
 npm run dev
 ```
 Dashboard runs on `http://localhost:3000`
+
+**Terminal 3 - Claude-Flow Planner (Optional):**
+```bash
+npm run cf:run
+```
+Planner runs on `http://localhost:7070`
 
 ## Usage
 
@@ -61,7 +70,7 @@ curl http://localhost:9090/health
 curl http://localhost:9090/agents
 ```
 
-### Add New Agent via API
+### Add Agent via API
 ```powershell
 $body = @{
   id="agent.custom.api"
@@ -72,6 +81,23 @@ $body = @{
 } | ConvertTo-Json
 
 Invoke-RestMethod -Uri "http://localhost:9090/register" -Method POST -Body $body -ContentType "application/json"
+```
+
+### Test Claude-Flow Planner
+```powershell
+# Health check
+Invoke-RestMethod -Uri 'http://localhost:7070/health' -Method GET
+
+# Generate plan
+$body = @{
+  goal='Fetch customer reviews and analyze sentiment'
+  agents=@(
+    @{id='agent.http.fetch';protocol='http'},
+    @{id='agent.mcp.analyze';protocol='mcp'}
+  )
+} | ConvertTo-Json -Depth 10
+
+Invoke-RestMethod -Uri 'http://localhost:7070/plan' -Method POST -Body $body -ContentType 'application/json'
 ```
 
 ## Features

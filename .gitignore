@@ -75,5 +75,7 @@ ZK_Circuit/
 rag-agent/
 ui/
 
-# Vendor - submodules managed separately
-vendor/
+# Vendor - keep submodule structure, ignore contents
+src/vendor/*/node_modules/
+src/vendor/*/.git/
+!src/vendor/claude-flow/
