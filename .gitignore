@@ -4,6 +4,12 @@ package-lock.json
 yarn.lock
 pnpm-lock.yaml
 ARCHITECTURE.md
+
+# External repositories (keep local only)
+AgentFlow/
+claude-flow/
+vendor/
+
 # Build output
 dist/
 build/
